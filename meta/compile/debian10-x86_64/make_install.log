@@ -1,0 +1,38 @@
+❯ make install PREFIX=/opt/bzip2 2>../make_install 1>&2
+if ( test ! -d /opt/bzip2/bin ) ; then mkdir -p /opt/bzip2/bin ; fi
+if ( test ! -d /opt/bzip2/lib ) ; then mkdir -p /opt/bzip2/lib ; fi
+if ( test ! -d /opt/bzip2/man ) ; then mkdir -p /opt/bzip2/man ; fi
+if ( test ! -d /opt/bzip2/man/man1 ) ; then mkdir -p /opt/bzip2/man/man1 ; fi
+if ( test ! -d /opt/bzip2/include ) ; then mkdir -p /opt/bzip2/include ; fi
+cp -f bzip2 /opt/bzip2/bin/bzip2
+cp -f bzip2 /opt/bzip2/bin/bunzip2
+cp -f bzip2 /opt/bzip2/bin/bzcat
+cp -f bzip2recover /opt/bzip2/bin/bzip2recover
+chmod a+x /opt/bzip2/bin/bzip2
+chmod a+x /opt/bzip2/bin/bunzip2
+chmod a+x /opt/bzip2/bin/bzcat
+chmod a+x /opt/bzip2/bin/bzip2recover
+cp -f bzip2.1 /opt/bzip2/man/man1
+chmod a+r /opt/bzip2/man/man1/bzip2.1
+cp -f bzlib.h /opt/bzip2/include
+chmod a+r /opt/bzip2/include/bzlib.h
+cp -f libbz2.a /opt/bzip2/lib
+chmod a+r /opt/bzip2/lib/libbz2.a
+cp -f bzgrep /opt/bzip2/bin/bzgrep
+ln -s -f /opt/bzip2/bin/bzgrep /opt/bzip2/bin/bzegrep
+ln -s -f /opt/bzip2/bin/bzgrep /opt/bzip2/bin/bzfgrep
+chmod a+x /opt/bzip2/bin/bzgrep
+cp -f bzmore /opt/bzip2/bin/bzmore
+ln -s -f /opt/bzip2/bin/bzmore /opt/bzip2/bin/bzless
+chmod a+x /opt/bzip2/bin/bzmore
+cp -f bzdiff /opt/bzip2/bin/bzdiff
+ln -s -f /opt/bzip2/bin/bzdiff /opt/bzip2/bin/bzcmp
+chmod a+x /opt/bzip2/bin/bzdiff
+cp -f bzgrep.1 bzmore.1 bzdiff.1 /opt/bzip2/man/man1
+chmod a+r /opt/bzip2/man/man1/bzgrep.1
+chmod a+r /opt/bzip2/man/man1/bzmore.1
+chmod a+r /opt/bzip2/man/man1/bzdiff.1
+echo ".so man1/bzgrep.1" > /opt/bzip2/man/man1/bzegrep.1
+echo ".so man1/bzgrep.1" > /opt/bzip2/man/man1/bzfgrep.1
+echo ".so man1/bzmore.1" > /opt/bzip2/man/man1/bzless.1
+echo ".so man1/bzdiff.1" > /opt/bzip2/man/man1/bzcmp.1

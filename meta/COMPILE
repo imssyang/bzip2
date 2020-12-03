@@ -1,0 +1,10 @@
+
+# Compiles
+make -f Makefile-libbz2_so
+make install PREFIX=/opt/bzip2
+
+
+cp /opt/bzip2/lib
+cp archive/source/bzip2-1.0.8/*.so /opt/bzip2/lib
+ln -s libbz2.so.1.0.8 libbz2.so
+
